@@ -37,16 +37,30 @@ public class StringCalculatorTest {
 	public void testAddwithDelimiters() throws Exception {
 		assertEquals(6, target.add("//[*][%]\\n1*2%3”"));
 	}
-	
+
 	@Test(expected = Exception.class)
 	public void testAddwithNegativeNumbers() throws Exception {
 		target.add("//[*][%]\\n-1*2%3”");
 	}
-	
+
 	@Test(expected = Exception.class)
 	public void testAddwithMultipleNegativeNumbers() throws Exception {
 		target.add("a-2c4.s-5t/n-9");
 	}
-	
-	
+
+	@Test
+	public void testAddwithAnyLengthOfDelimiters() throws Exception {
+		assertEquals(6, target.add("//[***]\\n1***2***3"));
+	}
+
+	@Test
+	public void testAddwithMultipleDelimiters() throws Exception {
+		assertEquals(6, target.add("//[*][%]\\n1*2%3"));
+	}
+
+	@Test
+	public void testAddwithMultipleAndAnyLengthOfDelimiters() throws Exception {
+		assertEquals(6, target.add("//[**][%%]\\n1**2%%3"));
+	}
+
 }
