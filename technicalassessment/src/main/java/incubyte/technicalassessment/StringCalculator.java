@@ -9,6 +9,8 @@ import java.util.regex.*;
  */
 public class StringCalculator {
 
+	private static int count = 0;
+
 	public int add(String numbers) throws Exception {
 
 		int sum = 0;
@@ -29,6 +31,7 @@ public class StringCalculator {
 				sum += number;
 			}
 		}
+		count++;
 		return sum;
 	}
 
@@ -41,5 +44,9 @@ public class StringCalculator {
 			negativeNumbers.add(matcher.group());
 		}
 		return negativeNumbers;
+	}
+
+	public int getCalledCount() {
+		return count;
 	}
 }
