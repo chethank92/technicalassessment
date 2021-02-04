@@ -13,19 +13,19 @@ public class StringCalculatorTest {
 	StringCalculator target = new StringCalculator();;
 
 	@Test
-	public void testAddWithEmptyString() {
+	public void testAddWithEmptyString() throws Exception {
 		int result = target.add("");
 		assertEquals(0, result);
 	}
 
 	@Test
-	public void testAddWithNullString() {
+	public void testAddWithNullString() throws Exception {
 		int result = target.add(null);
 		assertEquals(0, result);
 	}
 
 	@Test
-	public void testAddWithNumbers() {
+	public void testAddWithNumbers() throws Exception {
 		assertEquals(1, target.add("1"));
 		assertEquals(3, target.add("1,2"));
 		assertEquals(6, target.add("1,2,3"));
@@ -33,4 +33,8 @@ public class StringCalculatorTest {
 		assertEquals(7, target.add("x4y1z2"));
 	}
 
+	@Test
+	public void testAddwithDelimiters() throws Exception {
+		assertEquals(6, target.add("//[*][%]\\n1*2%3”"));
+	}
 }
