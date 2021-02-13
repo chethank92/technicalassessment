@@ -1,0 +1,23 @@
+<html>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.8.2/angular.min.js">
+	var app = app.module("app", {
+	});
+	
+	app.controller("EmployeeController", $scope, $http {
+		$scope.employees = [];
+		
+		$http.get("http://localhost:8080/api/employees").map(employees -> {
+			$scope.employees = employees;
+		});
+	})
+</script>
+<body ng-app="app">
+	<div ng-controller="EmployeeController">
+		<div ng-repeat = "employee of Employees">
+			<span> {{employee.id}}</span>
+			<span> {{employee.name}}</span>
+			<span> {{employee.department}}</span>
+		</div>
+	</div>
+</body>
+</html>
