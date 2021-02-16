@@ -1,10 +1,18 @@
 package com.sg.demo.entity;
 
+import java.io.Serializable;
+
 import javax.persistence.Column;
+import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
+import javax.persistence.Table;
 
-public class EmployeeEntity {
+@Entity
+@Table(name = "employee")
+public class EmployeeEntity implements Serializable {
+
+	private static final long serialVersionUID = 3705256181710193359L;
 
 	@Id
 	@GeneratedValue
@@ -14,12 +22,16 @@ public class EmployeeEntity {
 	private String name;
 
 	@Column
-	private String DepartName;
+	private String departmentName;
 
-	public EmployeeEntity(String name, String departName) {
+	public EmployeeEntity() {
+		super();
+	}
+
+	public EmployeeEntity(String name, String departmentName) {
 		super();
 		this.name = name;
-		DepartName = departName;
+		this.departmentName = departmentName;
 	}
 
 	public int getId() {
@@ -30,8 +42,8 @@ public class EmployeeEntity {
 		return name;
 	}
 
-	public String getDepartName() {
-		return DepartName;
+	public String getDepartmentName() {
+		return departmentName;
 	}
 
 }

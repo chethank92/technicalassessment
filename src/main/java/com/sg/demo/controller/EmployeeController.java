@@ -8,24 +8,25 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.sg.demo.entity.EmployeeEntity;
 import com.sg.demo.model.Employee;
 import com.sg.demo.service.EmployeeService;
 
-@RestController("/api")
+@RestController("/api/")
 public class EmployeeController {
 
 	@Autowired
 	private EmployeeService employeeService;
 
-	@RequestMapping(path = "/employees", method = RequestMethod.GET)
-	public List<Employee> getAllEmployees() {
+	@RequestMapping(path = "employees", method = RequestMethod.GET)
+	public List<EmployeeEntity> getAllEmployees() {
 
 		return employeeService.getEmployees();
 	}
 
-	@RequestMapping(path = "/employee", method = RequestMethod.POST)
-	public void save(@RequestBody Employee employee) {
+	@RequestMapping(path = "employee", method = RequestMethod.POST)
+	public void save(@RequestBody EmployeeEntity employeeEntity) {
 
-		employeeService.saveEmployee(employee);
+		employeeService.saveEmployee(employeeEntity);
 	}
 }
